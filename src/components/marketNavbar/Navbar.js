@@ -15,7 +15,9 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
-
+import { debounce } from 'lodash';
+import axios from 'axios';
+import { BackendBaseUrl } from "../../configs";
 
 const SearchIconWrapper = styled('div')(({ theme }) => ({
     padding: theme.spacing(0, 2),
@@ -66,10 +68,10 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
 
 
 
-export default function PrimarySearchAppBar() {
+export default function PrimarySearchAppBar({setProducts}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-
+const [isloading, setIsLoading] = React.useState(false);
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -89,6 +91,31 @@ export default function PrimarySearchAppBar() {
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
+
+  const searchKey = (e) => {
+    axios.post(`${BackendBaseUrl}/api/search{${searchKey}`).then((res) => {
+        console.log(res);
+        setProducts(res.data);
+        }).catch((err) => {
+            console.log(err);
+        })
+  }
+
+const debouncedSearch = debounce(searchKy, 1000);
+
+  const onSearch = (v) => {
+    const search = debouncedSearch;
+    if (!v) {
+      // when the user clear the field we don't want to perform a search, we need to clear the state and do nothing else
+      debouncedSearch.cancel();
+      setProducts([]);
+      setIsLoading(false);
+    } else {
+      setIsLoading(true);
+      search(v, setProducts, setIsLoading);
+    }
+  };
+
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -185,6 +212,7 @@ export default function PrimarySearchAppBar() {
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
+              onChange={(e) => {onSearch(e.target.value)}}
             />
           </Search>
           
