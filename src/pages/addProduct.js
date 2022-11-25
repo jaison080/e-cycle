@@ -19,7 +19,7 @@ const steps = [
   "Choose product category",
   "Enter Product Details",
   "Confirm Details",
-  "Dispose E-Wastes"
+  "Dispose E-Wastes",
 ];
 function Appliances() {
   const [activeStep, setActiveStep] = useState(0);
@@ -53,7 +53,7 @@ function Appliances() {
   };
 
   const handleNext = () => {
-    if(activeStep===0 && selectedCategoryId===-1){
+    if (activeStep === 0 && selectedCategoryId === -1) {
       alert("Please select a category first");
       return;
     }
@@ -91,30 +91,32 @@ function Appliances() {
   };
 
   async function uploadProduct() {
-    const selectedCategory = appliancesData.find((category)=>{
-      category.id == selectedCategoryId;
+    // console.log(selectedCategoryId, appliancesData);
+    const selectedCategory = appliancesData.find((category) => {
+      return category.id == selectedCategoryId;
     });
-    const selectedWay = disposeWastesData.find((way)=>{
-      way.id == selectedWayId;
+    const selectedWay = disposeWastesData.find((way) => {
+      return way.id == selectedWayId;
     });
-    const userMail="jaisondennis080@gmail.com"
+    const userMail = "jaisondennis080@gmail.com";
     const selectedCategoryName = selectedCategory?.name;
-    const selectedWayName = selectedWayId?.name;
+    // console.log(selectedCategoryName);
+    const selectedWayName = selectedWay?.name;
     const res = await axios.post(`${BackendBaseUrl}/api/postProductInfo`, {
-      userMail:userMail,
-      category:selectedCategoryName,
+      userMail: userMail,
+      category: selectedCategoryName,
       brand,
-      modelNumber,
+      modelNo: modelNumber,
       purchaseDate,
-      isUnderWarranty,
+      isWarranty: isUnderWarranty,
       isWorking,
-      physicalCondition,
-      imageUrl:"",
+      currentCondition: physicalCondition,
+      imageUrl: "",
       selectedWayName,
     });
     console.log(res);
   }
-  
+
   return (
     <>
       <CustomTitle title="Appliances" />
@@ -169,12 +171,20 @@ function Appliances() {
                     setPhysicalCondition={setPhysicalCondition}
                   />
                 )}
-                 {activeStep ===2 && (
+                {activeStep === 2 && (
                   <ConfirmOrder
-                   data ={{appliance:appliancesData[selectedCategoryId].name, brand, modelNumber, purchaseDate, isUnderWarranty, isWorking, physicalCondition}}
+                    data={{
+                      appliance: appliancesData[selectedCategoryId].name,
+                      brand,
+                      modelNumber,
+                      purchaseDate,
+                      isUnderWarranty,
+                      isWorking,
+                      physicalCondition,
+                    }}
                   />
                 )}
-                {activeStep ===3 && (
+                {activeStep === 3 && (
                   <DisposeWaste
                     toggle={selectedWayId}
                     setToggle={setSelectedWayId}
@@ -194,21 +204,24 @@ function Appliances() {
                 </Button>
                 <Box sx={{ flex: "1 1 auto" }} />
 
-                
-                  {activeStep === steps.length - 1 ? (
-                    <Button
+                {activeStep === steps.length - 1 ? (
+                  <Button
                     onClick={uploadProduct}
                     variant="contained"
                     className={styles.button}
-                  >Finish</Button>
-                  ) : (
-                    <Button onClick={handleNext}  variant="contained"
-                    className={styles.button}>
-                      Next
-                      <ArrowForwardIcon size={25} color="#fff" />
-                    </Button>
-                  )}
-                
+                  >
+                    Finish
+                  </Button>
+                ) : (
+                  <Button
+                    onClick={handleNext}
+                    variant="contained"
+                    className={styles.button}
+                  >
+                    Next
+                    <ArrowForwardIcon size={25} color="#fff" />
+                  </Button>
+                )}
               </Box>
             </React.Fragment>
           )}
