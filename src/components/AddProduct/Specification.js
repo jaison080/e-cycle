@@ -18,12 +18,13 @@ export default function Form() {
   return (
     <Grid container spacing={2}>
       <Grid item xs={4}>
-        <Typography variant="subtitle1" gutterBottom>
+        <Typography variant="subtitle1" gutterBottom data-aos="fade-left">
           Brand
         </Typography>
       </Grid>
-      <Grid item xs={8}>
+      <Grid item xs={8} >
         <TextField
+        data-aos="fade-right"
           id="outlined-basic"
           label="Samsung, Apple..."
           variant="outlined"
@@ -32,12 +33,13 @@ export default function Form() {
       </Grid>
 
       <Grid item xs={4}>
-        <Typography variant="subtitle1" gutterBottom>
+        <Typography variant="subtitle1" gutterBottom data-aos="fade-left">
           Model Number
         </Typography>
       </Grid>
       <Grid item xs={8}>
         <TextField
+        data-aos="fade-right"
           id="outlined-basic"
           label="AB12-38xxxxx"
           variant="outlined"
@@ -46,11 +48,11 @@ export default function Form() {
       </Grid>
 
       <Grid item xs={4}>
-        <Typography variant="subtitle1" gutterBottom>
+        <Typography variant="subtitle1" gutterBottom data-aos="fade-left">
           When did you buy it?
         </Typography>
       </Grid>
-      <Grid item xs={8}>
+      <Grid item xs={8} data-aos="fade-right">
         <LocalizationProvider dateAdapter={AdapterMoment}>
           <DatePicker
             label="Purchase Date"
