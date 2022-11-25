@@ -1,34 +1,42 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# E Cycle - TBD - TEK=O-THON
 
-## Getting Started
+![Logo]()
 
-First, run the development server:
+## Live Demo
+
+Link : http://tbdecycle.netlify.app/
+
+## Team Details
+
+Team Name : <b>TBD</b>
+
+## Project Description
+
+Developing A Web-App to reduce
+
+## Team Members:
+
+1. [Mohammed Salman Ali Pary](https://github.com/salmanpary)
+2. [Jaison Dennis](https://github.com/jaison080)
+3. [Mayon Francis](https://github.com/Mayon-Francis)
+4. [Jagannath E Shahi](https://github.com/Jagannathes)
+5. [Vishnu R Potti](https://github.com/Vishnurr2k01)
+
+## 🔧 Project UI:
+
+![Project Home](https://github.com/jaison080/Blind-Guru-Web/blob/master/images/img.png)
+![Project Dashboard](https://github.com/jaison080/Blind-Guru-Web/blob/master/images/img1.png)
+
+# Steps To Run the Project:
 
 ```bash
+git clone https://github.com/salmanpary/Blind-Guru-Web
+cd Blind-Guru-Web
+cd blind-guru
+npm install
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies Used:
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Next js for Front-End, Twitter API
