@@ -11,8 +11,10 @@
     justify-content: center;
     text-align: center;
     background-size: cover;
+    position: relative;
 }
 .left
 {
     padding-top: 10rem;
+    position: relative;
 }
