@@ -3,9 +3,7 @@ import appliancesData from "../../data/appliancesData";
 import styles from "./ApplianceCard.module.css";
 import Card from "../Card/Card";
 
-function ApplianceCard() {
-
-  const [toggle, setToggle] = useState(-1);
+function ApplianceCard({ toggle, setToggle }) {
   return (
     <>
       <div className={styles.cards}>
