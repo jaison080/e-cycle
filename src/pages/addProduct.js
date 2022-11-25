@@ -13,6 +13,7 @@ import { BackendBaseUrl } from "../configs";
 import appliancesData from "../data/appliancesData";
 import DisposeWaste from "../components/DisposeWaste/DisposeWaste";
 import ConfirmOrder from "../components/ConfirmOrder/ConfirmOrder";
+import disposeWastesData from "../data/disposeWastesData";
 
 const steps = [
   "Choose product category",
@@ -25,7 +26,7 @@ function Appliances() {
   const [skipped, setSkipped] = useState(new Set());
 
   const [selectedCategoryId, setSelectedCategoryId] = useState(-1);
-  const [selectedWay, setSelectedWay] = useState(-1);
+  const [selectedWayId, setSelectedWayId] = useState(-1);
   const [brand, setBrand] = useState("");
   const [modelNumber, setModelNumber] = useState("");
   const [purchaseDate, setPurchaseDate] = useState(0);
@@ -52,6 +53,10 @@ function Appliances() {
   };
 
   const handleNext = () => {
+    if(activeStep===0 && selectedCategoryId===-1){
+      alert("Please select a category first");
+      return;
+    }
     let newSkipped = skipped;
     if (isStepSkipped(activeStep)) {
       newSkipped = new Set(newSkipped.values());
@@ -89,15 +94,23 @@ function Appliances() {
     const selectedCategory = appliancesData.find((category)=>{
       category.id == selectedCategoryId;
     });
+    const selectedWay = disposeWastesData.find((way)=>{
+      way.id == selectedWayId;
+    });
+    const userMail="jaisondennis080@gmail.com"
     const selectedCategoryName = selectedCategory?.name;
+    const selectedWayName = selectedWayId?.name;
     const res = await axios.post(`${BackendBaseUrl}/api/postProductInfo`, {
-      selectedCategoryName,
+      userMail:userMail,
+      category:selectedCategoryName,
       brand,
       modelNumber,
       purchaseDate,
       isUnderWarranty,
       isWorking,
       physicalCondition,
+      imageUrl:"",
+      selectedWayName,
     });
     console.log(res);
   }
@@ -163,8 +176,8 @@ function Appliances() {
                 )}
                 {activeStep ===3 && (
                   <DisposeWaste
-                    toggle={selectedWay}
-                    setToggle={setSelectedWay}
+                    toggle={selectedWayId}
+                    setToggle={setSelectedWayId}
                   />
                 )}
               </div>
