@@ -11,7 +11,8 @@ const ProductSchema = new mongoose.Schema(
         isWorking: {type: Boolean},
         currentCondition: {type: String},
         imageUrl: {type: String},
-        disposalMethod: {type: Number}
+        disposalMethod: {type: String},
+        sold: {type: Boolean}
     }
 )
 module.exports = mongoose.models.Product ||mongoose.model("Product",ProductSchema)
