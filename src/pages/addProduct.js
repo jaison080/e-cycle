@@ -8,16 +8,36 @@ import { ApplianceCard, Specification } from "../components";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Typography from "@mui/material/Typography";
+import axios from "axios";
+import { BackendBaseUrl } from "../configs";
+import appliancesData from "../data/appliancesData";
 
 const steps = [
-  "Select campaign settings",
-  "Create an ad group",
-  "Create an ad",
+  "Choose product category",
+  "Enter Product Details",
+  "Confirm Details",
 ];
 function Appliances() {
   const [activeStep, setActiveStep] = useState(0);
   const [skipped, setSkipped] = useState(new Set());
 
+  const [selectedCategoryId, setSelectedCategoryId] = useState(-1);
+  const [brand, setBrand] = useState("");
+  const [modelNumber, setModelNumber] = useState("");
+  const [purchaseDate, setPurchaseDate] = useState(0);
+  const [isUnderWarranty, setIsUnderWarranty] = useState(false);
+  const [isWorking, setIsWorking] = useState(false);
+  const [physicalCondition, setPhysicalCondition] = useState("");
+
+  console.log(
+    selectedCategoryId,
+    brand,
+    modelNumber,
+    purchaseDate,
+    isUnderWarranty,
+    isWorking,
+    physicalCondition
+  );
   const isStepOptional = (step) => {
     return step === 1;
   };
@@ -59,6 +79,24 @@ function Appliances() {
   const handleReset = () => {
     setActiveStep(0);
   };
+
+  async function uploadProduct() {
+    const selectedCategory = appliancesData.find((category)=>{
+      category.id == selectedCategoryId;
+    });
+    const selectedCategoryName = selectedCategory.name;
+    const res = await axios.post(`${BackendBaseUrl}/api/products`, {
+      selectedCategoryName,
+      brand,
+      modelNumber,
+      purchaseDate,
+      isUnderWarranty,
+      isWorking,
+      physicalCondition,
+    });
+    console.log(res);
+  }
+  
   return (
     <>
       <CustomTitle title="Appliances" />
@@ -96,22 +134,55 @@ function Appliances() {
           ) : (
             <React.Fragment>
               <div className={styles.stepper_container}>
-              {activeStep === 0 && <ApplianceCard />}
-              {activeStep === 1 && <Specification />}
+                {activeStep === 0 && (
+                  <ApplianceCard
+                    toggle={selectedCategoryId}
+                    setToggle={setSelectedCategoryId}
+                  />
+                )}
+                {activeStep === 1 && (
+                  <Specification
+                    brand={brand}
+                    setBrand={setBrand}
+                    modelNumber={modelNumber}
+                    setModelNumber={setModelNumber}
+                    purchaseDate={purchaseDate}
+                    setPurchaseDate={setPurchaseDate}
+                    isUnderWarranty={isUnderWarranty}
+                    setIsUnderWarranty={setIsUnderWarranty}
+                    isWorking={isWorking}
+                    setIsWorking={setIsWorking}
+                    physicalCondition={physicalCondition}
+                    setPhysicalCondition={setPhysicalCondition}
+                  />
+                )}
               </div>
               <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
                 <Button
-                   variant="contained" className={styles.button}
+                  variant="contained"
+                  className={styles.button}
                   disabled={activeStep === 0}
                   onClick={handleBack}
                   sx={{ mr: 1 }}
                 >
-                 <ArrowBackIcon size={25} color="#fff" />Back
+                  <ArrowBackIcon size={25} color="#fff" />
+                  Back
                 </Button>
                 <Box sx={{ flex: "1 1 auto" }} />
 
-                <Button onClick={handleNext} variant="contained" className={styles.button}>
-                  {activeStep === steps.length - 1 ? "Finish" : (<>Next<ArrowForwardIcon size={25} color="#fff" /></> )}
+                <Button
+                  onClick={handleNext}
+                  variant="contained"
+                  className={styles.button}
+                >
+                  {activeStep === steps.length - 1 ? (
+                    "Finish"
+                  ) : (
+                    <>
+                      Next
+                      <ArrowForwardIcon size={25} color="#fff" />
+                    </>
+                  )}
                 </Button>
               </Box>
             </React.Fragment>

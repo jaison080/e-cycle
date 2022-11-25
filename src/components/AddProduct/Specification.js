@@ -13,7 +13,20 @@ import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { useState } from "react";
 
-export default function Form() {
+export default function Form({
+  brand,
+  setBrand,
+  modelNumber,
+  setModelNumber,
+  purchaseDate,
+  setPurchaseDate,
+  isUnderWarranty,
+  setIsUnderWarranty,
+  isWorking,
+  setIsWorking,
+  physicalCondition,
+  setPhysicalCondition,
+}) {
   const [value, setValue] = useState();
   return (
     <Grid container spacing={2}>
@@ -29,6 +42,8 @@ export default function Form() {
           label="Samsung, Apple..."
           variant="outlined"
           fullWidth
+          value={brand}
+          onChange={(e) => setBrand(e.target.value)}
         />
       </Grid>
 
@@ -44,6 +59,8 @@ export default function Form() {
           label="AB12-38xxxxx"
           variant="outlined"
           fullWidth
+          value={modelNumber}
+          onChange={(e) => setModelNumber(e.target.value)}
         />
       </Grid>
 
@@ -56,11 +73,12 @@ export default function Form() {
         <LocalizationProvider dateAdapter={AdapterMoment}>
           <DatePicker
             label="Purchase Date"
-            value={value}
-            views={["year", "month"]}
+            value={purchaseDate}
             onChange={(newValue) => {
-              setValue(newValue);
+              const date = newValue.toDate().toISOString();
+              setPurchaseDate(date);  
             }}
+            views={["year", "month"]}
             renderInput={(params) => <TextField {...params} fullWidth />}
           />
         </LocalizationProvider>
@@ -74,7 +92,15 @@ export default function Form() {
       <Grid item xs={8}>
         <FormControl>
           <FormLabel id="demo-radio-buttons-group-label"></FormLabel>
-          <RadioGroup defaultValue={false} name="isUnderWarranty" row>
+          <RadioGroup
+            defaultValue={false}
+            name="isUnderWarranty"
+            row
+            value={isUnderWarranty}
+            onChange={(e) => {
+              setIsUnderWarranty(e.target.value == "true");
+            }}
+          >
             <FormControlLabel value={true} control={<Radio />} label="Yes" />
             <FormControlLabel value={false} control={<Radio />} label="No" />
           </RadioGroup>
@@ -89,7 +115,15 @@ export default function Form() {
       <Grid item xs={8}>
         <FormControl>
           <FormLabel id="demo-radio-buttons-group-label"></FormLabel>
-          <RadioGroup defaultValue={false} name="isWorking" row>
+          <RadioGroup
+            defaultValue={false}
+            name="isWorking"
+            row
+            value={isWorking}
+            onChange={(e) => {
+              setIsWorking(e.target.value == "true");
+            }}
+          >
             <FormControlLabel value={true} control={<Radio />} label="Yes" />
             <FormControlLabel value={false} control={<Radio />} label="No" />
           </RadioGroup>
@@ -102,7 +136,12 @@ export default function Form() {
         </Typography>
       </Grid>
       <Grid item xs={8}>
-        <TextField multiline fullWidth />
+        <TextField
+          multiline
+          fullWidth
+          value={physicalCondition}
+          onChange={(e) => setPhysicalCondition(e.target.value)}
+        />
       </Grid>
     </Grid>
   );
