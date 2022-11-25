@@ -3,15 +3,13 @@ const mongoose = require('mongoose');
 const PartsSchema = new mongoose.Schema(
     {
         userMail: {type: String, required: true},
+        partName:{type:String},
         category: {type: String, required: true},
         brand: {type: String},
         modelNo: {type: String},
         purchaseDate: {type: Date},
-        isWarranty: {type: Boolean},
-        isWorking: {type: Boolean},
-        currentCondition: {type: String},
-        imageUrl: {type: String}
+        imageUrl: {type: String},
+        sold: {type: Boolean}
     }
 )
-module.exports = mongoose.models.Product ||mongoose.model("Parts",PartsSchema)
-
+module.exports = mongoose.models.Parts ||mongoose.model("Parts",PartsSchema)
