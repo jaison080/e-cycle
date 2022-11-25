@@ -36,7 +36,7 @@ function Appliances() {
   const [isWorking, setIsWorking] = useState(false);
   const [physicalCondition, setPhysicalCondition] = useState("");
 
-  const router=useRouter()
+  const router = useRouter();
   console.log(
     selectedCategoryId,
     brand,
@@ -105,20 +105,22 @@ function Appliances() {
     const selectedCategoryName = selectedCategory?.name;
     // console.log(selectedCategoryName);
     const selectedWayName = selectedWay?.name;
-    const res = await axios.post(`${BackendBaseUrl}/api/postProductInfo`, {
-      userMail: userMail,
-      category: selectedCategoryName,
-      brand,
-      modelNo: modelNumber,
-      purchaseDate,
-      isWarranty: isUnderWarranty,
-      isWorking,
-      currentCondition: physicalCondition,
-      imageUrl: "",
-      disposalMethod:selectedWayName,
-    }).then((res)=>{
-        router.push('/complete')
-    })
+    const res = await axios
+      .post(`${BackendBaseUrl}/api/postProductInfo`, {
+        userMail: userMail,
+        category: selectedCategoryName,
+        brand,
+        modelNo: modelNumber,
+        purchaseDate,
+        isWarranty: isUnderWarranty,
+        isWorking,
+        currentCondition: physicalCondition,
+        imageUrl: "",
+        disposalMethod: selectedWayName,
+      })
+      .then((res) => {
+        router.push("/complete");
+      });
   }
 
   return (

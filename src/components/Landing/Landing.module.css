@@ -1,0 +1,18 @@
+.landing_container
+{
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    background: url("../../assets/background.png") no-repeat center center fixed;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-size: cover;
+}
+.left
+{
+    padding-top: 10rem;
+}
