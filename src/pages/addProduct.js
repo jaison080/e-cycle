@@ -14,6 +14,8 @@ import appliancesData from "../data/appliancesData";
 import DisposeWaste from "../components/DisposeWaste/DisposeWaste";
 import ConfirmOrder from "../components/ConfirmOrder/ConfirmOrder";
 import disposeWastesData from "../data/disposeWastesData";
+import { Router } from "@mui/icons-material";
+import { useRouter } from "next/router";
 
 const steps = [
   "Choose product category",
@@ -34,6 +36,7 @@ function Appliances() {
   const [isWorking, setIsWorking] = useState(false);
   const [physicalCondition, setPhysicalCondition] = useState("");
 
+  const router=useRouter()
   console.log(
     selectedCategoryId,
     brand,
@@ -113,8 +116,9 @@ function Appliances() {
       currentCondition: physicalCondition,
       imageUrl: "",
       selectedWayName,
-    });
-    console.log(res);
+    }).then((res)=>{
+        router.push('/complete')
+    })
   }
 
   return (
