@@ -115,7 +115,7 @@ function Appliances() {
       isWorking,
       currentCondition: physicalCondition,
       imageUrl: "",
-      selectedWayName,
+      disposalMethod:selectedWayName,
     }).then((res)=>{
         router.push('/complete')
     })
