@@ -14,5 +14,5 @@ const ProductSchema = new mongoose.Schema(
         disposalMethod: {type: Number}
     }
 )
-module.exports = mongoose.model("Product",ProductSchema)
+module.exports = mongoose.models.Product ||mongoose.model("Product",ProductSchema)
 
