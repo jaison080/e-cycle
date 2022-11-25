@@ -1,5 +1,6 @@
 import { BiFridge } from "react-icons/bi";
 import { CgSmartHomeWashMachine } from "react-icons/cg";
+import {MdDevicesOther} from "react-icons/md";
 import { IoLaptopOutline } from "react-icons/io5";
 import { RiComputerLine } from "react-icons/ri";
 import { TfiMobile } from "react-icons/tfi";
@@ -41,7 +42,12 @@ const appliancesData = [
         id: 7,
         name: "Solar Panels",
         icon: <FaSolarPanel size={120} />,
-    }
+    },
+{
+        id: 8,
+        name: "Others",
+        icon: <MdDevicesOther size={120} />,
+}
 
 ]
 export default appliancesData;
