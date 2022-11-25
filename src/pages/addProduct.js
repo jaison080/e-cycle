@@ -11,17 +11,21 @@ import Typography from "@mui/material/Typography";
 import axios from "axios";
 import { BackendBaseUrl } from "../configs";
 import appliancesData from "../data/appliancesData";
+import DisposeWaste from "../components/DisposeWaste/DisposeWaste";
+import ConfirmOrder from "../components/ConfirmOrder/ConfirmOrder";
 
 const steps = [
   "Choose product category",
   "Enter Product Details",
   "Confirm Details",
+  "Dispose E-Wastes"
 ];
 function Appliances() {
   const [activeStep, setActiveStep] = useState(0);
   const [skipped, setSkipped] = useState(new Set());
 
   const [selectedCategoryId, setSelectedCategoryId] = useState(-1);
+  const [selectedWay, setSelectedWay] = useState(-1);
   const [brand, setBrand] = useState("");
   const [modelNumber, setModelNumber] = useState("");
   const [purchaseDate, setPurchaseDate] = useState(0);
@@ -38,6 +42,7 @@ function Appliances() {
     isWorking,
     physicalCondition
   );
+
   const isStepOptional = (step) => {
     return step === 1;
   };
@@ -84,8 +89,8 @@ function Appliances() {
     const selectedCategory = appliancesData.find((category)=>{
       category.id == selectedCategoryId;
     });
-    const selectedCategoryName = selectedCategory.name;
-    const res = await axios.post(`${BackendBaseUrl}/api/products`, {
+    const selectedCategoryName = selectedCategory?.name;
+    const res = await axios.post(`${BackendBaseUrl}/api/postProductInfo`, {
       selectedCategoryName,
       brand,
       modelNumber,
@@ -106,11 +111,6 @@ function Appliances() {
             {steps.map((label, index) => {
               const stepProps = {};
               const labelProps = {};
-              if (isStepOptional(index)) {
-                labelProps.optional = (
-                  <Typography variant="caption">Optional</Typography>
-                );
-              }
               if (isStepSkipped(index)) {
                 stepProps.completed = false;
               }
@@ -156,6 +156,17 @@ function Appliances() {
                     setPhysicalCondition={setPhysicalCondition}
                   />
                 )}
+                 {activeStep ===2 && (
+                  <ConfirmOrder
+                   data ={{appliance:appliancesData[selectedCategoryId].name, brand, modelNumber, purchaseDate, isUnderWarranty, isWorking, physicalCondition}}
+                  />
+                )}
+                {activeStep ===3 && (
+                  <DisposeWaste
+                    toggle={selectedWay}
+                    setToggle={setSelectedWay}
+                  />
+                )}
               </div>
               <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
                 <Button
@@ -170,20 +181,21 @@ function Appliances() {
                 </Button>
                 <Box sx={{ flex: "1 1 auto" }} />
 
-                <Button
-                  onClick={handleNext}
-                  variant="contained"
-                  className={styles.button}
-                >
+                
                   {activeStep === steps.length - 1 ? (
-                    "Finish"
+                    <Button
+                    onClick={uploadProduct}
+                    variant="contained"
+                    className={styles.button}
+                  >Finish</Button>
                   ) : (
-                    <>
+                    <Button onClick={handleNext}  variant="contained"
+                    className={styles.button}>
                       Next
                       <ArrowForwardIcon size={25} color="#fff" />
-                    </>
+                    </Button>
                   )}
-                </Button>
+                
               </Box>
             </React.Fragment>
           )}

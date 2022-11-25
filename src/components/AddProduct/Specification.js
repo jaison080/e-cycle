@@ -12,6 +12,7 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { useState } from "react";
+import { Container } from "@mui/system";
 
 export default function Form({
   brand,
@@ -29,15 +30,16 @@ export default function Form({
 }) {
   const [value, setValue] = useState();
   return (
+    <Container sx={{width:"90vw"}}>
     <Grid container spacing={2}>
       <Grid item xs={4}>
         <Typography variant="subtitle1" gutterBottom data-aos="fade-left">
           Brand
         </Typography>
       </Grid>
-      <Grid item xs={8} >
+      <Grid item xs={8}>
         <TextField
-        data-aos="fade-right"
+          data-aos="fade-right"
           id="outlined-basic"
           label="Samsung, Apple..."
           variant="outlined"
@@ -54,7 +56,7 @@ export default function Form({
       </Grid>
       <Grid item xs={8}>
         <TextField
-        data-aos="fade-right"
+          data-aos="fade-right"
           id="outlined-basic"
           label="AB12-38xxxxx"
           variant="outlined"
@@ -76,7 +78,7 @@ export default function Form({
             value={purchaseDate}
             onChange={(newValue) => {
               const date = newValue.toDate().toISOString();
-              setPurchaseDate(date);  
+              setPurchaseDate(date);
             }}
             views={["year", "month"]}
             renderInput={(params) => <TextField {...params} fullWidth />}
@@ -85,12 +87,12 @@ export default function Form({
       </Grid>
 
       <Grid item xs={4}>
-        <Typography variant="subtitle1" gutterBottom>
+        <Typography variant="subtitle1" gutterBottom data-aos="fade-left">
           Is your product still under warranty?
         </Typography>
       </Grid>
       <Grid item xs={8}>
-        <FormControl>
+        <FormControl data-aos="fade-right">
           <FormLabel id="demo-radio-buttons-group-label"></FormLabel>
           <RadioGroup
             defaultValue={false}
@@ -108,12 +110,12 @@ export default function Form({
       </Grid>
 
       <Grid item xs={4}>
-        <Typography variant="subtitle1" gutterBottom>
+        <Typography variant="subtitle1" gutterBottom data-aos="fade-left">
           Is your product in working condition?
         </Typography>
       </Grid>
       <Grid item xs={8}>
-        <FormControl>
+        <FormControl data-aos="fade-right">
           <FormLabel id="demo-radio-buttons-group-label"></FormLabel>
           <RadioGroup
             defaultValue={false}
@@ -131,12 +133,13 @@ export default function Form({
       </Grid>
 
       <Grid item xs={4}>
-        <Typography variant="subtitle1" gutterBottom>
+        <Typography variant="subtitle1" gutterBottom data-aos="fade-left">
           Describe physical condition
         </Typography>
       </Grid>
       <Grid item xs={8}>
         <TextField
+          data-aos="fade-right"
           multiline
           fullWidth
           value={physicalCondition}
@@ -144,5 +147,6 @@ export default function Form({
         />
       </Grid>
     </Grid>
+    </Container>
   );
 }

@@ -12,14 +12,14 @@
     text-align: center;
   }
   .card:hover{
-    background-color: #478b4a;
+    background-color: #348eca;
     color: white;
   }
   .card_selected{
     width: 262px;
     height: 315px;
-    background-color: #478b4a;
     color: white;
+    background-color: #348eca;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
     border-radius: 20px;
     display: flex;
