@@ -1,0 +1,17 @@
+.appliances_container
+{
+    padding: 5rem;
+}
+
+.button
+{
+    color: white ;
+    font-size: 18px;
+    font-weight: 700 ;
+    gap: 7px;
+}
+.stepper_container
+{
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
