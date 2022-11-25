@@ -2,9 +2,10 @@ import "../styles/globals.css";
 import { createTheme, ThemeProvider } from "@mui/material";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import {SessionProvider} from "next-auth/react";
 import { useEffect } from "react";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   const theme = createTheme({
     typography: {
       allVariants: {
@@ -17,9 +18,11 @@ function MyApp({ Component, pageProps }) {
     AOS.init({ delay: 0, duration: 1000 });
   });
   return (
+    <SessionProvider session={session}>
     <ThemeProvider theme={theme}>
       <Component {...pageProps} />
     </ThemeProvider>
+    </SessionProvider>
   );
 }
 
