@@ -119,7 +119,7 @@ function Appliances() {
 
   return (
     <>
-      <CustomTitle title="Appliances" />
+      <CustomTitle title="Add Product" />
       <div className={styles.appliances_container}>
         <Box sx={{ width: "100%" }}>
           <Stepper activeStep={activeStep}>
