@@ -4,17 +4,15 @@
   height: 100vh;
   flex-wrap: nowrap;
   justify-content: center;
+  gap:4rem;
+  padding: 4rem;
   align-items: center;
-  background: url("../../assets/background.png") no-repeat center center fixed;
-  align-items: center;
-  justify-content: center;
   text-align: center;
-  background-size: cover;
-  position: relative;
 }
-.left {
-  padding-top: 14rem;
-  position: relative;
+.left img
+{
+    width:700px;
+    height: auto;
 }
 
 .button {

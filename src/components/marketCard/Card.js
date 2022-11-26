@@ -11,7 +11,7 @@ function MarketCard(props) {
  
   return (
     <div data-aos="fade-up">
-       <Card sx={{ maxWidth: 345, p:1, br:"30px" }}>
+       <Card sx={{ maxWidth: 345,minHeight:"500px", p:1, borderRadius:"30px",display:"flex",justifyContent:"space-evenly",flexDirection:"column" }}>
       <CardMedia
         component="img"
         alt="green iguana"

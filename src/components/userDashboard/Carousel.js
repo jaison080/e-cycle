@@ -29,7 +29,7 @@ export default function Carousel() {
       onSwiper={(swiper) => console.log(swiper)}
       className={style.carouselWrapper}
     >
-      {products.map((product) => {
+      {/* {products.map((product) => {
         return (
           <SwiperSlide>
             <div className={style.card}>
@@ -39,7 +39,7 @@ export default function Carousel() {
             </div>
           </SwiperSlide>
         );
-      })}
+      })} */}
     </Swiper>
   );
 }

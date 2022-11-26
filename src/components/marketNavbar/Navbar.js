@@ -68,7 +68,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
 
 
 
-export default function PrimarySearchAppBar({setProducts}) {
+export default function PrimarySearchAppBar({setProducts, initial}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 const [isloading, setIsLoading] = React.useState(false);
@@ -92,8 +92,13 @@ const [isloading, setIsLoading] = React.useState(false);
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
-  const searchKey = (e) => {
-    axios.post(`${BackendBaseUrl}/api/search{${searchKey}`).then((res) => {
+  const searchFun = (
+    queryParam,
+    setProducts,
+    setIsLoading
+  ) => {
+    axios
+      .get(`${BackendBaseUrl}/api/search/${queryParam}`).then((res) => {
         console.log(res);
         setProducts(res.data);
         }).catch((err) => {
@@ -101,14 +106,14 @@ const [isloading, setIsLoading] = React.useState(false);
         })
   }
 
-const debouncedSearch = debounce(searchKy, 1000);
+const debouncedSearch = debounce(searchFun, 1000);
 
   const onSearch = (v) => {
     const search = debouncedSearch;
     if (!v) {
       // when the user clear the field we don't want to perform a search, we need to clear the state and do nothing else
       debouncedSearch.cancel();
-      setProducts([]);
+      setProducts(initial);
       setIsLoading(false);
     } else {
       setIsLoading(true);
@@ -193,14 +198,14 @@ const debouncedSearch = debounce(searchKy, 1000);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" sx={{backgroundColor:"#8cb6db",color:"black"}}>
         <Toolbar>
           <Box sx={{ flexGrow: 0.1 }} />
           <Typography
-            variant="h5"
+            variant="h4"
             noWrap
             component="div"
-            sx={{ display: { xs: 'none', sm: 'block' } }}
+            sx={{ display: { xs: 'none', sm: 'block' },fontWeight:"600" }}
           >
             E-Cycle
           </Typography>

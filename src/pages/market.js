@@ -1,25 +1,46 @@
-import React from 'react'
+import React, { useEffect } from "react";
 import styles from "../styles/Market.module.css";
-import Card from "../components/marketCard/Card"
-import  Navbar  from '../components/marketNavbar/Navbar';
+import Card from "../components/marketCard/Card";
+import Navbar from "../components/marketNavbar/Navbar";
+import { BackendBaseUrl } from "../configs";
+import axios from "axios";
 function market() {
-    const arr = Array.from(Array(9).keys());
-    console.log(arr);
+  const [initial, setInitial] = React.useState([]);
+  const [products, setProducts] = React.useState([]);
+  const displayProducts = async () => {
+    const response = await axios.get(`${BackendBaseUrl}/api/getProductInfo`);
+    const data = await response;
+    console.log(data.data);
+    if (data.data) {
+      setInitial(data.data);
+      setProducts(data.data);
+    }
+  };
+  useEffect(() => {
+    displayProducts();
+    console;
+  }, []);
   return (
     <>
-    <Navbar/>
-    <div className={styles.cards}>
-      {arr.map((appliance, index) => {
-        return (
-          <Card
-           name="bolts"
-           description = "super rusty, dont forget to take a tetnus shot after touching it"
-          />
-        );
-      })}
-    </div>
-  </>
-  )
+      <Navbar setProducts={setProducts} initial={initial} />
+      <div className={styles.cards}>
+        {products.map((appliance, index) => {
+          return (
+            <Card
+              name={
+                appliance.item
+                  ? `${appliance.item.brand} ${appliance.item.modelNo}`
+                  : `${appliance.brand} ${appliance.modelNo}`
+              }
+              description={
+                appliance.item ? appliance.item.category : appliance.category
+              }
+            />
+          );
+        })}
+      </div>
+    </>
+  );
 }
 
-export default market
+export default market;

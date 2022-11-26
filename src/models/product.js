@@ -13,5 +13,5 @@ const PartsSchema = new mongoose.Schema(
         imageUrl: {type: String}
     }
 )
-module.exports = mongoose.models.Product ||mongoose.model("Parts",PartsSchema)
+module.exports = mongoose.models.Product ||mongoose.model("Product",PartsSchema)
 

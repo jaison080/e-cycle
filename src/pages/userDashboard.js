@@ -10,7 +10,7 @@ export default function userDashboard() {
       <Navbar />
       <AddProduct />
       <Typography variant="h4" >Your Products</Typography>
-      <Carousel />
+      {/* <Carousel /> */}
     </div>
   );
 }
