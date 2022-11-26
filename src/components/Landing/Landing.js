@@ -4,9 +4,11 @@ import styles from "./Landing.module.css";
 import logo from "../../assets/ecycle.png";
 import { signIn } from "next-auth/react";
 import { useSession } from "next-auth/react";
+import {useRouter} from 'next/router'
 
 function Landing() {
   const { data: session, status } = useSession();
+  const router=useRouter();
   console.log(session, status);
   return (
     <div className={styles.landing_container}>
@@ -25,8 +27,19 @@ function Landing() {
           Reduce your carbon footprint by reusing and recycling your old
           appliances
         </p>
+        <div style={{
+        display:"flex",
+        flexDirection:"row",
+        justifyContent:"center",
+        gap:"2rem"
+      }}>
         <button className={styles.button} onClick={()=>{signIn('google')}}>Get Started</button>
+        <button className={styles.button} onClick={()=>{router.push('/register')}}>Register</button>
+        
+      
       </div>
+      </div>
+      
     </div>
   );
 }
