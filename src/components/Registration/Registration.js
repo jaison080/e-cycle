@@ -41,8 +41,9 @@ export default function Registration() {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
+    <Container component="main" maxWidth="xs"  sx={{
+      backgroundColor:"none"
+    }}>
       <Box
         sx={{
           marginTop: 8,
@@ -52,10 +53,10 @@ export default function Registration() {
           backgroundColor:"none"
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }} data-aos="fade-down">
           <LockOutlinedIcon />
         </Avatar>
-        <Typography component="h1" variant="h5">
+        <Typography component="h1" variant="h5" data-aos="fade-down">
           Registration
         </Typography>
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
@@ -69,6 +70,7 @@ export default function Registration() {
                 id="firstName"
                 label="First Name"
                 autoFocus
+                data-aos="fade-right"
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -79,6 +81,7 @@ export default function Registration() {
                 label="Last Name"
                 name="lastName"
                 autoComplete="family-name"
+                data-aos="fade-left"
               />
             </Grid>
             <Grid item xs={12}>
@@ -89,6 +92,7 @@ export default function Registration() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                data-aos="fade-right"
               />
             </Grid>
             <Grid item xs={12}>
@@ -101,10 +105,11 @@ export default function Registration() {
                 type="address"
                 id="address"
                 autoComplete="address"
+                data-aos="fade-left"
               />
             </Grid>
             <Grid item xs={12}>
-            <FormControl fullWidth>
+            <FormControl fullWidth data-aos="fade-right">
               <InputLabel id="demo-simple-select-label">Role</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
@@ -119,7 +124,7 @@ export default function Registration() {
               </Select>
             </FormControl>
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} data-aos="fade-left">
               <Typography>Upload Documents</Typography>
               <input type="file" />
             </Grid>
@@ -127,6 +132,7 @@ export default function Registration() {
               <FormControlLabel
                 control={<Checkbox value="allowExtraEmails" color="primary" />}
                 label="I accept the Terms and Conditions."
+                data-aos="fade-up"
               />
             </Grid>
           </Grid>
@@ -135,6 +141,7 @@ export default function Registration() {
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
+            data-aos="fade-up"
           >
             Register
           </Button>
