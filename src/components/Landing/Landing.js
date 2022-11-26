@@ -34,22 +34,22 @@ function Landing() {
           width: "100%",
 
         }}>
-          <button
+          <div
             className={styles.button}
             onClick={() => {
               signIn("google");
             }}
           >
             Get Started
-          </button>
-          <button
+          </div>
+          <div
             className={styles.button}
             onClick={() => {
               router.push("/register");
             }}
           >
             Register
-          </button>
+          </div>
         </div>
       </div>
     </div>

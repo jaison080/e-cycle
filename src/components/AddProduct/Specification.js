@@ -13,6 +13,7 @@ import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { useState } from "react";
 import { Container } from "@mui/system";
+import { SettingsPhoneTwoTone } from "@mui/icons-material";
 
 export default function Form({
   brand,
@@ -27,6 +28,7 @@ export default function Form({
   setIsWorking,
   physicalCondition,
   setPhysicalCondition,
+  setPhoto
 }) {
   const [value, setValue] = useState();
   return (
@@ -146,7 +148,9 @@ export default function Form({
           onChange={(e) => setPhysicalCondition(e.target.value)}
         />
       </Grid>
-      
+      <Grid item xs={8}>
+       <input type="file" onChange={(e)=>{setPhoto(e.target.files[0])}}/>
+      </Grid>
     </Grid>
     </Container>
   );
