@@ -4,20 +4,20 @@ import CustomTitle from "../utils/customTitle";
 import { Box, Button, Stepper } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { ApplianceCard, Specification } from "../components";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Typography from "@mui/material/Typography";
 import axios from "axios";
 import { BackendBaseUrl } from "../configs";
 import appliancesData from "../data/appliancesData";
-import DisposeWaste from "../components/DisposeWaste/DisposeWaste";
-import ConfirmOrder from "../components/ConfirmOrder/ConfirmOrder";
+import {
+  DisposeWaste,
+  ConfirmOrder,
+  ApplianceCard,
+  Specification,
+} from "../components";
 import disposeWastesData from "../data/disposeWastesData";
-import { Router } from "@mui/icons-material";
 import { useRouter } from "next/router";
-
-
 
 const steps = [
   "Choose product category",
@@ -28,7 +28,7 @@ const steps = [
 function Appliances() {
   const [activeStep, setActiveStep] = useState(0);
   const [skipped, setSkipped] = useState(new Set());
-  const [photo, setPhoto] = useState("")
+  const [photo, setPhoto] = useState("");
   const [selectedCategoryId, setSelectedCategoryId] = useState(-1);
   const [selectedWayId, setSelectedWayId] = useState(-1);
   const [brand, setBrand] = useState("");
@@ -177,7 +177,7 @@ function Appliances() {
                     setIsWorking={setIsWorking}
                     physicalCondition={physicalCondition}
                     setPhysicalCondition={setPhysicalCondition}
-                    setPhoto= {setPhoto}
+                    setPhoto={setPhoto}
                   />
                 )}
                 {activeStep === 2 && (

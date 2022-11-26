@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import styles from "../styles/Market.module.css";
-import Card from "../components/marketCard/Card";
-import Navbar from "../components/marketNavbar/Navbar";
+import { Navbar, Card } from "../components";
 import { BackendBaseUrl } from "../configs";
 import axios from "axios";
 import CustomTitle from "../utils/customTitle";
@@ -23,7 +22,7 @@ function market() {
   }, []);
   return (
     <>
-    <CustomTitle title="Market"/>
+      <CustomTitle title="Market" />
       <Navbar setProducts={setProducts} initial={initial} />
       <div className={styles.cards}>
         {products.map((appliance, index) => {

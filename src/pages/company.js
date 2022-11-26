@@ -1,4 +1,4 @@
-import Dashboard from "../components/Dashboard/Dashboard";
+import {Dashboard} from "../components";
 import CustomTitle from "../utils/customTitle";
 
 export default function () {

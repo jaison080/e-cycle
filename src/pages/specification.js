@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import Form from "../components/AddProduct/Specification";
+import {Form} from "../components";
 import styles from "../styles/Specification.module.css";
 
 export default function Specification() {
