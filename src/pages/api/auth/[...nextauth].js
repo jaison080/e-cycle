@@ -4,8 +4,8 @@ import GoogleProvider from 'next-auth/providers/google'
 export default NextAuth({
     providers: [
       GoogleProvider({
-        clientId: "132963126300-j180g7mmdh0a53v1rp89er641ohfqp7f.apps.googleusercontent.com",
-        clientSecret: "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",
+        clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
+        clientSecret: process.env.NEXT_PUBLIC_GOOGLE_SECRET_KEY,
         authorization: {
           params: {
             prompt: "consent",
