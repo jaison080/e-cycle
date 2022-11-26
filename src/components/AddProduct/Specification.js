@@ -17,12 +17,9 @@ import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { useState } from "react";
 import { Container } from "@mui/system";
-<<<<<<< HEAD
 import { SettingsPhoneTwoTone } from "@mui/icons-material";
-=======
 const geoUrl =
   "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json";
->>>>>>> refs/remotes/origin/main
 
 export default function Form({
   brand,
@@ -198,7 +195,6 @@ export default function Form({
           )}
         </Grid>
       </Grid>
-<<<<<<< HEAD
       <Grid item xs={8}>
         <TextField
           data-aos="fade-right"
@@ -208,12 +204,9 @@ export default function Form({
           onChange={(e) => setPhysicalCondition(e.target.value)}
         />
       </Grid>
-      <Grid item xs={8}>
+      {/* <Grid item xs={8}>
        <input type="file" onChange={(e)=>{setPhoto(e.target.files[0])}}/>
-      </Grid>
-    </Grid>
-=======
->>>>>>> refs/remotes/origin/main
+      </Grid> */}
     </Container>
   );
 }
