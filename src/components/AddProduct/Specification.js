@@ -167,10 +167,14 @@ export default function Form({
             onChange={(e) => setPhysicalCondition(e.target.value)}
           />
         </Grid>
-
+        <Grid item xs={4}>
+          <Typography variant="subtitle1" gutterBottom data-aos="fade-left">
+            Location
+          </Typography>
+        </Grid>
         <Grid
           item
-          xs={11}
+          xs={8}
           justifyContent="center"
           alignItems="center"
           textAlign={"center"}
@@ -194,15 +198,6 @@ export default function Form({
             </ComposableMap>
           )}
         </Grid>
-      </Grid>
-      <Grid item xs={8}>
-        <TextField
-          data-aos="fade-right"
-          multiline
-          fullWidth
-          value={physicalCondition}
-          onChange={(e) => setPhysicalCondition(e.target.value)}
-        />
       </Grid>
       {/* <Grid item xs={8}>
        <input type="file" onChange={(e)=>{setPhoto(e.target.files[0])}}/>
