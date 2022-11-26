@@ -18,6 +18,8 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import { debounce } from 'lodash';
 import axios from 'axios';
 import { BackendBaseUrl } from "../../configs";
+import { signOut } from 'next-auth/react';
+import { Router, useRouter } from 'next/router';
 
 const SearchIconWrapper = styled('div')(({ theme }) => ({
     padding: theme.spacing(0, 2),
@@ -69,6 +71,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
 
 
 export default function PrimarySearchAppBar({setProducts, initial}) {
+  const router=useRouter();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 const [isloading, setIsLoading] = React.useState(false);
@@ -140,7 +143,12 @@ const debouncedSearch = debounce(searchFun, 1000);
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={()=>{handleMenuClose();
+    signOut().then(()=>{
+      router.push('/')
+    })  
+    }
+    }>Logout</MenuItem>
     </Menu>
   );
 

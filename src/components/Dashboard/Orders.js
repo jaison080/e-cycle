@@ -88,9 +88,6 @@ export default function Orders({ rows }) {
               Appliance Type
             </TableCell>
             <TableCell style={{ fontWeight: "800 !important" }}>
-              Brand
-            </TableCell>
-            <TableCell style={{ fontWeight: "800 !important" }}>
               Model No.
             </TableCell>
             <TableCell style={{ fontWeight: "800 !important" }}>
@@ -112,7 +109,6 @@ export default function Orders({ rows }) {
           {rows.map((row) => (
             <TableRow key={row._id}>
               <TableCell>{row?.category?.toString()}</TableCell>
-              <TableCell>{row?.brand?.toString()}</TableCell>
               <TableCell>{row?.modelNo?.toString()}</TableCell>
               <TableCell>{getDate(row?.purchaseDate)}</TableCell>
               <TableCell>{row?.currentCondition?.toString()}</TableCell>
