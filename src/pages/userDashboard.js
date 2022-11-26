@@ -6,11 +6,11 @@ import Navbar from "../components/userDashboard/Navbar";
 import styles from "../styles/userDashboard.module.css";
 export default function userDashboard() {
   return (
-    <div className={styles.wrapper}>
+    <>
       <Navbar />
       <AddProduct />
       <Typography variant="h4" >Your Products</Typography>
       <Carousel />
-    </div>
+    </>
   );
 }

@@ -197,6 +197,7 @@ function Appliances() {
                   <DisposeWaste
                     toggle={selectedWayId}
                     setToggle={setSelectedWayId}
+                    isWorking={isWorking}
                   />
                 )}
               </div>
