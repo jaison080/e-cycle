@@ -11,12 +11,13 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-
-const theme = createTheme();
+import axios from "axios";
+import {useRouter} from 'next/router'
+import {BackendBaseUrl} from '../../configs'
 
 export default function Registration() {
-  const handleSubmit = (event) => {
+  const router=useRouter();
+  const handleSubmit =async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     let userData = {
@@ -25,10 +26,14 @@ export default function Registration() {
       address: data.get("address"),
     };
     console.log(userData);
+    await axios.post(`${BackendBaseUrl}/api/postRegistrations`,userData).then((res)=>{
+      console.log(res.data);
+      router.push('/')
+    })
+
   };
 
   return (
-    <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -119,6 +124,5 @@ export default function Registration() {
           </Box>
         </Box>
       </Container>
-    </ThemeProvider>
   );
 }
