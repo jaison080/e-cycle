@@ -17,12 +17,12 @@ function Landing() {
   }
   return (
     <div className={styles.landing_container}>
-      <div className={styles.left}>
+      <div className={styles.left} data-aos="fade-left">
         <Image src={vector} alt="" />
       </div>
       <div>
-        <Image src={logo} /> <h1>Reuse, Recycle, Reduce</h1>
-        <p>
+        <Image src={logo} data-aos="fade-up" /> <h1 data-aos="fade-up">Reuse, Recycle, Reduce</h1>
+        <p data-aos="fade-up">
           Reduce your carbon footprint by reusing and recycling your old
           appliances
         </p>
@@ -33,23 +33,25 @@ function Landing() {
           gap:"2rem",
           width: "100%",
 
-        }}>
-          <button
+        }} data-aos="fade-right">
+          <div
             className={styles.button}
+            data-aos="fade-up"
             onClick={() => {
               signIn("google");
             }}
           >
             Get Started
-          </button>
-          <button
+          </div>
+          <div
             className={styles.button}
+            data-aos="fade-up"
             onClick={() => {
               router.push("/register");
             }}
           >
             Register
-          </button>
+          </div>
         </div>
       </div>
     </div>

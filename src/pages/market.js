@@ -4,6 +4,7 @@ import Card from "../components/marketCard/Card";
 import Navbar from "../components/marketNavbar/Navbar";
 import { BackendBaseUrl } from "../configs";
 import axios from "axios";
+import CustomTitle from "../utils/customTitle";
 function market() {
   const [initial, setInitial] = React.useState([]);
   const [products, setProducts] = React.useState([]);
@@ -22,6 +23,7 @@ function market() {
   }, []);
   return (
     <>
+    <CustomTitle title="Market"/>
       <Navbar setProducts={setProducts} initial={initial} />
       <div className={styles.cards}>
         {products.map((appliance, index) => {

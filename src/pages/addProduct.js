@@ -17,6 +17,8 @@ import disposeWastesData from "../data/disposeWastesData";
 import { Router } from "@mui/icons-material";
 import { useRouter } from "next/router";
 
+
+
 const steps = [
   "Choose product category",
   "Enter Product Details",
@@ -26,7 +28,7 @@ const steps = [
 function Appliances() {
   const [activeStep, setActiveStep] = useState(0);
   const [skipped, setSkipped] = useState(new Set());
-
+  const [photo, setPhoto] = useState("")
   const [selectedCategoryId, setSelectedCategoryId] = useState(-1);
   const [selectedWayId, setSelectedWayId] = useState(-1);
   const [brand, setBrand] = useState("");
@@ -175,6 +177,7 @@ function Appliances() {
                     setIsWorking={setIsWorking}
                     physicalCondition={physicalCondition}
                     setPhysicalCondition={setPhysicalCondition}
+                    setPhoto= {setPhoto}
                   />
                 )}
                 {activeStep === 2 && (
@@ -194,6 +197,7 @@ function Appliances() {
                   <DisposeWaste
                     toggle={selectedWayId}
                     setToggle={setSelectedWayId}
+                    isWorking={isWorking}
                   />
                 )}
               </div>
