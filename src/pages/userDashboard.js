@@ -8,9 +8,12 @@ export default function userDashboard() {
   return (
     <>
       <Navbar />
+      <div className={styles.wrapper}>
       <AddProduct />
       <Typography variant="h4" >Your Products</Typography>
       <Carousel />
+      </div>
+      
     </>
   );
 }
