@@ -16,7 +16,8 @@ function Complete() {
         rowGap: '1rem',
         alignItems: 'center',
         height: '90vh'
-    }}>
+    }}
+    data-aos="zoom-in">
         <h1>Your Product has been successfully registered !!</h1>
         <h1>A Technician will Contact You Soon to book slot for checking the product...</h1>
         <br/>
