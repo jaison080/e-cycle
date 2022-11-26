@@ -10,8 +10,10 @@ export default function userDashboard() {
       <Navbar />
       <div className={styles.wrapper}>
       <AddProduct />
+      <div data-aos="fade-up">
       <Typography variant="h4" >Your Products</Typography>
       <Carousel />
+      </div>
       </div>
       
     </>
