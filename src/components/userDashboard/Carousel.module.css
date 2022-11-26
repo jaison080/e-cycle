@@ -1,0 +1,19 @@
+.card {
+  width: 180px;
+  height: 180px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-align: center;
+  font-size: small !important;
+}
+
+.carouselWrapper {
+    width: 90vw;
+    height: 200px;
+}
