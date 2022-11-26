@@ -14,7 +14,7 @@ function MarketCard(props) {
        <Card sx={{ maxWidth: 345,minHeight:"500px", p:1, borderRadius:"30px",display:"flex",justifyContent:"space-evenly",flexDirection:"column" }}>
       <CardMedia
         component="img"
-        alt="green iguana"
+        alt=""
         height="250"
         image="https://www.serac-group.com/wp-content/uploads/2019/09/Parts.jpg"
       />
