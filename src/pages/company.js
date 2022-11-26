@@ -4,7 +4,7 @@ import CustomTitle from "../utils/customTitle";
 export default function () {
   return (
     <>
-      <CustomTitle title="Dashboard" />
+      <CustomTitle title="Company Dashboard" />
       <Dashboard />
     </>
   );

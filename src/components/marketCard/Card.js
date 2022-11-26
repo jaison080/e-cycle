@@ -16,7 +16,7 @@ function MarketCard(props) {
         component="img"
         alt=""
         height="250"
-        image="https://www.serac-group.com/wp-content/uploads/2019/09/Parts.jpg"
+        image="https://fossbytes.com/wp-content/uploads/2017/06/smartphone-camera-teardown.jpg"
       />
       <CardContent>
         <Typography gutterBottom variant="h4" component="div">
