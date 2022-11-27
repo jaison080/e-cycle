@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styles from "../styles/Market.module.css";
-import { Navbar, Card } from "../components";
+import { Navbar, MarketCard } from "../components";
 import { BackendBaseUrl } from "../configs";
 import axios from "axios";
 import CustomTitle from "../utils/customTitle";
@@ -27,7 +27,7 @@ function market() {
       <div className={styles.cards}>
         {products.map((appliance, index) => {
           return (
-            <Card
+            <MarketCard
               name={
                 appliance.item
                   ? `${appliance.item.brand} ${appliance.item.modelNo}`
